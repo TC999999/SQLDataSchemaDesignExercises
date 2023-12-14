@@ -54,29 +54,29 @@ CREATE TABLE moons
 CREATE TABLE planets_orbital_period
 (
   id SERIAL PRIMARY KEY,
-  planet_id INTEGER REFERENCES planets,
+  planet_id INTEGER NOT NULL REFERENCES planets,
   orbital_period_in_years FLOAT NOT NULL
 );
 
 CREATE TABLE planets_orbital_bodies
 (
   id SERIAL PRIMARY KEY,
-  planet_id INTEGER REFERENCES planets,
-  orbits_around_id INTEGER REFERENCES orbital_bodies
+  planet_id INTEGER NOT NULL REFERENCES planets,
+  orbits_around_id INTEGER NOT NULL REFERENCES orbital_bodies
 );
 
 CREATE TABLE planets_galaxies
 (
   id SERIAL PRIMARY KEY,
-  planet_id INTEGER REFERENCES planets,
-  galaxy_id INTEGER REFERENCES galaxies
+  planet_id INTEGER NOT NULL REFERENCES planets,
+  galaxy_id INTEGER NOT NULL REFERENCES galaxies
 );
 
 CREATE TABLE planets_moons
 (
   id SERIAL PRIMARY KEY,
-  planet_id INTEGER REFERENCES planets,
-  moon_id INTEGER REFERENCES moons
+  planet_id INTEGER NOT NULL REFERENCES planets,
+  moon_id INTEGER NOT NULL REFERENCES moons
 );
 
 INSERT INTO planets (name)

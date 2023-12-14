@@ -64,27 +64,27 @@ CREATE TABLE passengers
 CREATE TABLE departures
 (
   id SERIAL PRIMARY KEY,
-  from_city_id INTEGER REFERENCES cities,
-  from_country_id INTEGER REFERENCES countries
+  from_city_id INTEGER NOT NULL REFERENCES cities,
+  from_country_id INTEGER NOT NULL REFERENCES countries
 );
 
 CREATE TABLE arrivals
 (
   id SERIAL PRIMARY KEY,
-  to_city_id INTEGER REFERENCES cities,
-  to_country_id INTEGER REFERENCES countries
+  to_city_id INTEGER NOT NULL REFERENCES cities,
+  to_country_id INTEGER NOT NULL REFERENCES countries
 );
 
 CREATE TABLE tickets
 (
   id SERIAL PRIMARY KEY,
-  passenger_id INTEGER REFERENCES passengers,
+  passenger_id INTEGER NOT NULL REFERENCES passengers,
   seat TEXT NOT NULL,
   departure TIMESTAMP NOT NULL,
   arrival TIMESTAMP NOT NULL,
-  airline_id INTEGER REFERENCES airlines,
-  departure_id INTEGER REFERENCES departures,
-  arrival_id INTEGER REFERENCES arrivals
+  airline_id INTEGER NOT NULL REFERENCES airlines,
+  departure_id INTEGER NOT NULL REFERENCES departures,
+  arrival_id INTEGER NOT NULL REFERENCES arrivals
 );
 
 INSERT INTO airlines (name)

@@ -23,8 +23,8 @@ CREATE TABLE patients
 CREATE TABLE visits
 (
     id SERIAL PRIMARY KEY,
-    doctor_id INTEGER REFERENCES doctors,
-    patient_id INTEGER REFERENCES patients,
+    doctor_id INTEGER REFERENCES doctors ON DELETE SET NULL,
+    patient_id INTEGER NOT NULL REFERENCES patients,
     visit_date DATE NOT NULL,
     symptoms TEXT
 );
@@ -38,8 +38,8 @@ CREATE TABLE diseases
 CREATE TABLE diagnoses
 (
     id SERIAL PRIMARY KEY,
-    visit_id INTEGER REFERENCES visits ON DELETE CASCADE,
-    diagnosis INTEGER REFERENCES diseases ON DELETE CASCADE,
+    visit_id INTEGER NOT NULL REFERENCES visits ON DELETE CASCADE,
+    diagnosis INTEGER NOT NULL REFERENCES diseases,
     prescription TEXT NOT NULL,
     other_notes TEXT
 );

@@ -61,22 +61,22 @@ CREATE TABLE albums
 CREATE TABLE songs_artists
 (
   id SERIAL PRIMARY KEY,
-  song_id INTEGER REFERENCES songs,
-  artist_id INTEGER REFERENCES artists 
+  song_id INTEGER NOT NULL REFERENCES songs,
+  artist_id INTEGER NOT NULL REFERENCES artists 
 );
 
 CREATE TABLE songs_producers
 (
   id SERIAL PRIMARY KEY,
-  song_id INTEGER REFERENCES songs,
-  producer_id INTEGER REFERENCES producers
+  song_id INTEGER NOT NULL REFERENCES songs,
+  producer_id INTEGER NOT NULL REFERENCES producers
 );
 
 CREATE TABLE albums_songs
 (
   id SERIAL PRIMARY KEY,
-  album_id INTEGER REFERENCES albums,
-  song_id INTEGER REFERENCES songs
+  album_id INTEGER NOT NULL REFERENCES albums,
+  song_id INTEGER NOT NULL REFERENCES songs
   
 );
 
